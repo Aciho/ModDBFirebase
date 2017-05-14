@@ -16,6 +16,14 @@ module.exports = function(environment) {
         Date: false
       }
     },
+    firebase: {
+      apiKey: 'AIzaSyCaYLlN3XWn3SVmMYXMh6jCibH1XAxcwg4',
+      authDomain: 'dom4modbrowsaer.firebaseapp.com',
+      databaseURL: 'https://dom4modbrowsaer.firebaseio.com',
+      projectId: 'dom4modbrowsaer',
+      storageBucket: 'dom4modbrowsaer.appspot.com',
+      messagingSenderId: '441462674275'
+    },
 
     APP: {
       // Here you can pass flags/options to your application instance

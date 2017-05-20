@@ -1,17 +1,8 @@
+{{page-toolbar pageTitle="Introduction" isDemo=false}}
 
+{{#paper-content scroll-y=true class="layout-padding flex"}}
+  <div class="doc-content">
 
-
-
-<div class="layout-row layout-xs-column">
-  <div class="layout-column flex-20 sidebar">
-  </div>
-
-  <div class="layout-column layout-align-center flex-60">
-    <div>
-      <h2>Welcome!</h2>
-      <p>We hope you find exactly what you're looking for in a dominions mod.</p>
-    </div>
-    <div>
     {{#each model as |mod|}}
       {{#paper-card as |card|}}
         {{#card.title as |title|}}
@@ -29,8 +20,6 @@
         {{/card.content}}
       {{/paper-card}}
     {{/each}}
+
   </div>
-  </div>
-  <div class="layout-column flex-20">
-  </div>
-</div>
+{{/paper-content}}

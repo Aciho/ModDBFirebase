@@ -1,37 +1,43 @@
-{{#paper-content}}
+{{#paper-sidenav-container class="site-nav-container"}}
+  {{#paper-sidenav class="md-whiteframe-z2 site-sidenav" lockedOpen="gt-sm"
+                   open=isSidenavOpen onToggle=(action (mut isSidenavOpen))}}
+    {{#paper-toolbar class="site-content-toolbar" tall=true}}
+      <div class="logo layout-column layout-align-center-center">
+        <div class="container">
+          <img src="ophanim.png">
+          <div class="dom4-name">Dominions 4</div>
+        </div>
+        <div class="moddb-name">ModDB</div>
+      </div>
+    {{/paper-toolbar}}
 
+    {{#paper-content}}
 
-  <div class="body">
-    {{#paper-content flex-layout="column" flex=false}}
-      {{#paper-toolbar as |toolbar|}}
-        {{#toolbar.tools}}
-          {{#link-to 'index'}}
-            {{#paper-button iconButton=true}}
-              {{paper-icon "home"}}
-            {{/paper-button}}
-          {{/link-to}}
-          <h1>Dominions 4 Mod DB</h1>
-          <span class="flex"></span>
-          {{#paper-button raised=true accent=true}}
-            Upload Mod
-          {{/paper-button}}
-          {{#paper-button}}
-            {{paper-icon "account circle"}}
-          {{/paper-button}}
-        {{/toolbar.tools}}
-      {{/paper-toolbar}}
+      {{#paper-list}}
+        {{#menu-item active=(is-active "index" currentRouteName) onClick=(transition-to "index")}}Introduction{{/menu-item}}
+
+        {{#menu-item onClick=(action "toggleExpandedItem" "nationTypes") expanded=nationTypesExpanded canExpand=true}}Nations{{/menu-item}}
+
+        <div class="submenu">
+          {{#liquid-if nationTypesExpanded}}
+            {{#submenu-item active=(is-active "demo.button" currentRouteName) onClick=(transition-to "demo.button")}}Early Era{{/submenu-item}}
+            {{#submenu-item active=(is-active "demo.card" currentRouteName) onClick=(transition-to "demo.card")}}Middle Era{{/submenu-item}}
+            {{#submenu-item active=(is-active "demo.checkbox" currentRouteName) onClick=(transition-to "demo.checkbox")}}Late Era{{/submenu-item}}
+            {{#submenu-item active=(is-active "demo.chips" currentRouteName) onClick=(transition-to "demo.chips")}}Others{{/submenu-item}}
+          {{/liquid-if}}
+        </div>
+
+        {{#menu-item active=(is-active "forms" currentRouteName) onClick=(transition-to "forms")}}Balance Mods{{/menu-item}}
+        {{#menu-item active=(is-active "typography" currentRouteName) onClick=(transition-to "typography")}}Total Conversions{{/menu-item}}
+        {{#menu-item active=(is-active "theme" currentRouteName) onClick=(transition-to "theme")}}Content Mods{{/menu-item}}
+
+        {{#menu-item active=(is-active "cookbook" currentRouteName) onClick=(transition-to "cookbook")}}Others{{/menu-item}}
+      {{/paper-list}}
+
     {{/paper-content}}
+  {{/paper-sidenav}}
 
+  <div class="flex layout-column" tabindex="-1" role="main">
     {{outlet}}
   </div>
-  <div class="footer">
-    <div class="links">
-      {{#link-to 'about'}}
-        About
-      {{/link-to}}
-      {{#link-to 'contact'}}
-        Contact
-      {{/link-to}}
-    </div>
-  </div>
-{{/paper-content}}
+{{/paper-sidenav-container}}

@@ -1,1 +1,6 @@
 @import 'ember-paper';
+
+.sidebar {
+  color: color($primary, 'contrast');
+  background-color: color($primary, '200');
+}

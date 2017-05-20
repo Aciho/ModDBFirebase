@@ -1,0 +1,36 @@
+
+
+
+
+<div class="layout-row layout-xs-column">
+  <div class="layout-column flex-20 sidebar">
+  </div>
+
+  <div class="layout-column layout-align-center flex-60">
+    <div>
+      <h2>Welcome!</h2>
+      <p>We hope you find exactly what you're looking for in a dominions mod.</p>
+    </div>
+    <div>
+    {{#each model as |mod|}}
+      {{#paper-card as |card|}}
+        {{#card.title as |title|}}
+          {{#title.text as |text|}}
+            {{#text.headline}}{{mod.title}}{{/text.headline}}
+            {{#text.subhead}}{{mod.subtitle}}{{/text.subhead}}
+          {{/title.text}}
+          {{#title.media size="md"}}
+            <img src={{mod.image}}>
+          {{/title.media}}
+        {{/card.title}}
+        {{#card.content}}
+          <span>Age:</span> {{mod.age}}
+          <span>Version:</span> {{mod.version}}
+        {{/card.content}}
+      {{/paper-card}}
+    {{/each}}
+  </div>
+  </div>
+  <div class="layout-column flex-20">
+  </div>
+</div>

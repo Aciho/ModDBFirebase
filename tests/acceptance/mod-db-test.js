@@ -7,11 +7,23 @@ test('visiting /', function(assert) {
   visit('/');
 
   andThen(function() {
-    assert.equal(currentURL(), '/');
+    assert.equal(currentURL(), '/mods', 'should automatically redirect to mods');
+  });
+});
+
+test('there should be an about page', function (assert) {
+  visit('/');
+  click('a:contains("About")');
+  andThen(function() {
+    assert.equal(currentURL(), '/about', 'should navigate to about');
   });
 });
 
 test('Should list uploaded mods', function (assert) {
+  visit('/');
+  andThen(function() {
+    assert.equal(find('.mod-summary').length, 3, 'should see 3 mods');
+  });
 });
 test('Clicking on mod should show more information', function (assert) {
 });

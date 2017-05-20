@@ -1,5 +1,37 @@
-{{!-- The following component displays Ember's default welcome message. --}}
-{{welcome-page}}
-{{!-- Feel free to remove this! --}}
+{{#paper-content}}
 
-{{outlet}}
+
+  <div class="body">
+    {{#paper-content flex-layout="column" flex=false}}
+      {{#paper-toolbar as |toolbar|}}
+        {{#toolbar.tools}}
+          {{#link-to 'index'}}
+            {{#paper-button iconButton=true}}
+              {{paper-icon "home"}}
+            {{/paper-button}}
+          {{/link-to}}
+          <h1>Dominions 4 Mod DB</h1>
+          <span class="flex"></span>
+          {{#paper-button raised=true accent=true}}
+            Upload Mod
+          {{/paper-button}}
+          {{#paper-button}}
+            {{paper-icon "account circle"}}
+          {{/paper-button}}
+        {{/toolbar.tools}}
+      {{/paper-toolbar}}
+    {{/paper-content}}
+
+    {{outlet}}
+  </div>
+  <div class="footer">
+    <div class="links">
+      {{#link-to 'about'}}
+        About
+      {{/link-to}}
+      {{#link-to 'contact'}}
+        Contact
+      {{/link-to}}
+    </div>
+  </div>
+{{/paper-content}}

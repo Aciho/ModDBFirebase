@@ -5,26 +5,29 @@ moduleForAcceptance('Acceptance | mod db');
 
 test('visiting /', function(assert) {
   visit('/');
-
   andThen(function() {
     assert.equal(currentURL(), '/mods', 'should automatically redirect to mods');
-  });
-});
-
-test('there should be an about page', function (assert) {
-  visit('/');
-  click('a:contains("About")');
-  andThen(function() {
-    assert.equal(currentURL(), '/about', 'should navigate to about');
   });
 });
 
 test('Should list uploaded mods', function (assert) {
   visit('/');
   andThen(function() {
-    assert.equal(find('.mod-summary').length, 3, 'should see 3 mods');
+    assert.equal(find('.modtype').length, 6, 'should see 6 mods');
   });
 });
+
+test('Mods should be in categories', function (assert) {
+});
+
+test('Mods should be searchable', function (assert) {
+  visit('/');
+  fillIn('input.search', 'dd');
+  andThen(function() {
+    assert.equal(find('.modtype').length, 3, 'should see 3 mods');
+  });
+});
+
 test('Clicking on mod should show more information', function (assert) {
 });
 test('Should be able to download the mods as a zip file', function (assert) {

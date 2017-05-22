@@ -2,24 +2,6 @@
 
 {{#paper-content scroll-y=true class="layout-padding flex"}}
   <div class="doc-content">
-
-    {{#each model as |mod|}}
-      {{#paper-card as |card|}}
-        {{#card.title as |title|}}
-          {{#title.text as |text|}}
-            {{#text.headline}}{{mod.title}}{{/text.headline}}
-            {{#text.subhead}}{{mod.subtitle}}{{/text.subhead}}
-          {{/title.text}}
-          {{#title.media size="md"}}
-            <img src={{mod.image}}>
-          {{/title.media}}
-        {{/card.title}}
-        {{#card.content}}
-          <span>Age:</span> {{mod.age}}
-          <span>Version:</span> {{mod.version}}
-        {{/card.content}}
-      {{/paper-card}}
-    {{/each}}
-
+    {{outlet}}
   </div>
 {{/paper-content}}

@@ -1,0 +1,6 @@
+{{#mod-filter filter=(action 'filterByName') as |models|}}
+  {{#each models as |mod|}}
+    {{mod-listing mod=mod}}
+  {{/each}}
+  {{outlet}}
+{{/mod-filter}}

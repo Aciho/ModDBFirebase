@@ -15,21 +15,22 @@
 
       {{#paper-list}}
         {{#menu-item active=(is-active "index" currentRouteName) onClick=(transition-to "index")}}Introduction{{/menu-item}}
+        {{#menu-item active=(is-active "mods.all" currentRouteName) onClick=(transition-to "mods.all")}}All Mods{{/menu-item}}
 
         {{#menu-item onClick=(action "toggleExpandedItem" "nationTypes") expanded=nationTypesExpanded canExpand=true}}Nations{{/menu-item}}
 
         <div class="submenu">
           {{#liquid-if nationTypesExpanded}}
-            {{#submenu-item active=(is-active "demo.button" currentRouteName) onClick=(transition-to "demo.button")}}Early Era{{/submenu-item}}
-            {{#submenu-item active=(is-active "demo.card" currentRouteName) onClick=(transition-to "demo.card")}}Middle Era{{/submenu-item}}
-            {{#submenu-item active=(is-active "demo.checkbox" currentRouteName) onClick=(transition-to "demo.checkbox")}}Late Era{{/submenu-item}}
-            {{#submenu-item active=(is-active "demo.chips" currentRouteName) onClick=(transition-to "demo.chips")}}Others{{/submenu-item}}
+            {{#submenu-item active=(is-active "mods.ea" currentRouteName) onClick=(transition-to "mods.ea")}}Early Era{{/submenu-item}}
+            {{#submenu-item active=(is-active "mods.ma" currentRouteName) onClick=(transition-to "mods.ma")}}Middle Era{{/submenu-item}}
+            {{#submenu-item active=(is-active "mods.la" currentRouteName) onClick=(transition-to "mods.la")}}Late Era{{/submenu-item}}
+            {{#submenu-item active=(is-active "mods.xa" currentRouteName) onClick=(transition-to "mods.xa")}}Others{{/submenu-item}}
           {{/liquid-if}}
         </div>
 
-        {{#menu-item active=(is-active "forms" currentRouteName) onClick=(transition-to "forms")}}Balance Mods{{/menu-item}}
-        {{#menu-item active=(is-active "typography" currentRouteName) onClick=(transition-to "typography")}}Total Conversions{{/menu-item}}
-        {{#menu-item active=(is-active "theme" currentRouteName) onClick=(transition-to "theme")}}Content Mods{{/menu-item}}
+        {{#menu-item active=(is-active "mods.balance" currentRouteName) onClick=(transition-to "mods.balance")}}Balance Mods{{/menu-item}}
+        {{#menu-item active=(is-active "mods.tc" currentRouteName) onClick=(transition-to "mods.tc")}}Total Conversions{{/menu-item}}
+        {{#menu-item active=(is-active "mods.content" currentRouteName) onClick=(transition-to "mods.content")}}Content Mods{{/menu-item}}
 
         {{#menu-item active=(is-active "cookbook" currentRouteName) onClick=(transition-to "cookbook")}}Others{{/menu-item}}
       {{/paper-list}}

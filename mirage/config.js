@@ -24,11 +24,13 @@ export default function() {
     http://www.ember-cli-mirage.com/docs/v0.3.x/shorthands/
   */
 
+  this.passthrough('https://firebasestorage.googleapis.com/**');
+
   this.namespace = '/api';
 
   const mods = [
     {
-      id: 1,
+      id: '1',
       type: 'dom-mod',
       attributes: {
         title: 'Moddonation',
@@ -40,7 +42,7 @@ export default function() {
       }
     },
     {
-      id: 2,
+      id: '2',
       type: 'dom-mod',
       attributes: {
         title: 'Moddonation',
@@ -52,7 +54,7 @@ export default function() {
       }
     },
     {
-      id: 3,
+      id: '3',
       type: 'dom-mod',
       attributes: {
         title: 'Moddonation',
@@ -102,13 +104,25 @@ export default function() {
   ];
 
   this.get('/dom-mods', function(db, request) {
-    if (request.queryParams.name !== undefined) {
-      let filteredMods = mods.filter(function (i) {
+    let filteredMods = mods;
+
+    if (request.queryParams.type !== undefined && request.queryParams.type !== '') {
+      filteredMods = mods.filter(function (i) {
+        return i.attributes.type.toLowerCase() === request.queryParams.type.toLowerCase();
+      });
+    }
+
+    if (request.queryParams.name !== undefined && request.queryParams.name !== '') {
+      filteredMods = mods.filter(function (i) {
         return i.attributes.title.toLowerCase().indexOf(request.queryParams.name.toLowerCase()) !== -1;
       });
-      return {data: filteredMods};
-    } else {
-      return {data: mods};
     }
+
+    return {data: filteredMods};
+  });
+
+  // Find and return the provided mod from our mod list above
+  this.get('/dom-mods/:id', function (db, request) {
+    return { data: mods.find((mod) => request.params.id === mod.id) };
   });
 }

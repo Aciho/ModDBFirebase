@@ -1,6 +1,6 @@
-{{#mod-filter filter=(action 'filterByName') as |models|}}
-  {{#each models as |mod|}}
-    {{mod-listing mod=mod}}
+  {{#each filteredMods as |mod|}}
+    {{#link-to "mods.show" mod}}
+      {{mod-listing mod=mod}}
+    {{/link-to}}
   {{/each}}
   {{outlet}}
-{{/mod-filter}}

@@ -10,6 +10,12 @@ export default Controller.extend({
       }
       this.set('expandedItem', value);
       ev.stopPropagation();
+    },
+    showDialog() {
+        this.set('showDialog', true);
+    },
+    closeDialog() {
+      this.set('showDialog', false);
     }
   },
 

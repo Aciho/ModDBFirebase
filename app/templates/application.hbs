@@ -4,7 +4,7 @@
     {{#paper-toolbar class="site-content-toolbar" tall=true}}
       <div class="logo layout-column layout-align-center-center">
         <div class="container">
-          <img src="ophanim.png">
+          <img src="/ophanim.png">
           <div class="dom4-name">Dominions 4</div>
         </div>
         <div class="moddb-name">ModDB</div>
@@ -14,31 +14,39 @@
     {{#paper-content}}
 
       {{#paper-list}}
-        {{#menu-item active=(is-active "index" currentRouteName) onClick=(transition-to "index")}}Introduction{{/menu-item}}
-        {{#menu-item active=(is-active "mods.all" currentRouteName) onClick=(transition-to "mods.all")}}All Mods{{/menu-item}}
+        {{#menu-item onClick=(transition-to "index")}}Introduction{{/menu-item}}
+        {{#menu-item  onClick=(transition-to "mods.all")}}All Mods{{/menu-item}}
 
         {{#menu-item onClick=(action "toggleExpandedItem" "nationTypes") expanded=nationTypesExpanded canExpand=true}}Nations{{/menu-item}}
 
         <div class="submenu">
           {{#liquid-if nationTypesExpanded}}
-            {{#submenu-item active=(is-active "mods.ea" currentRouteName) onClick=(transition-to "mods.ea")}}Early Era{{/submenu-item}}
-            {{#submenu-item active=(is-active "mods.ma" currentRouteName) onClick=(transition-to "mods.ma")}}Middle Era{{/submenu-item}}
-            {{#submenu-item active=(is-active "mods.la" currentRouteName) onClick=(transition-to "mods.la")}}Late Era{{/submenu-item}}
-            {{#submenu-item active=(is-active "mods.xa" currentRouteName) onClick=(transition-to "mods.xa")}}Others{{/submenu-item}}
+            {{#submenu-item onClick=(transition-to "mods.ea")}}Early Era{{/submenu-item}}
+            {{#submenu-item onClick=(transition-to "mods.ma")}}Middle Era{{/submenu-item}}
+            {{#submenu-item onClick=(transition-to "mods.la")}}Late Era{{/submenu-item}}
+            {{#submenu-item onClick=(transition-to "mods.xa")}}Others{{/submenu-item}}
           {{/liquid-if}}
         </div>
 
-        {{#menu-item active=(is-active "mods.balance" currentRouteName) onClick=(transition-to "mods.balance")}}Balance Mods{{/menu-item}}
-        {{#menu-item active=(is-active "mods.tc" currentRouteName) onClick=(transition-to "mods.tc")}}Total Conversions{{/menu-item}}
-        {{#menu-item active=(is-active "mods.content" currentRouteName) onClick=(transition-to "mods.content")}}Content Mods{{/menu-item}}
+        {{#menu-item onClick=(transition-to "mods.balance")}}Balance Mods{{/menu-item}}
+        {{#menu-item onClick=(transition-to "mods.tc")}}Total Conversions{{/menu-item}}
+        {{#menu-item onClick=(transition-to "mods.content")}}Content Mods{{/menu-item}}
 
-        {{#menu-item active=(is-active "cookbook" currentRouteName) onClick=(transition-to "cookbook")}}Others{{/menu-item}}
+        {{#menu-item onClick=(transition-to "mods.others")}}Others{{/menu-item}}
       {{/paper-list}}
+      {{paper-divider}}
+      <div class="layout-column layout-align-center-stretch">
+        <br>
+        {{#paper-button raised=true primary=true onClick=(action "showDialog")}}Upload{{/paper-button}}
+      </div>
 
     {{/paper-content}}
   {{/paper-sidenav}}
 
   <div class="flex layout-column" tabindex="-1" role="main">
+    {{#if showDialog}}
+      {{upload-dialog closeDialog=(action "closeDialog")}}
+    {{/if}}
     {{outlet}}
   </div>
 {{/paper-sidenav-container}}

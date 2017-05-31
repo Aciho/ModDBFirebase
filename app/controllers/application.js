@@ -1,8 +1,14 @@
 import Ember from 'ember';
+import { task } from 'ember-concurrency';
+const { get, set } = Ember;
 
 const { Controller, computed } = Ember;
 
 export default Controller.extend({
+  model() {
+    return this.get('store').findAll('dom-mod');
+  },
+
   actions: {
     toggleExpandedItem(value, ev) {
       if (this.get('expandedItem') === value) {
@@ -19,6 +25,9 @@ export default Controller.extend({
     },
     filterMods() {
       this.transitionToRoute('mods');
+    },
+    uploadImage(file) {
+      this.get(this, 'uploaddommod').perform(file);
     }
   },
 

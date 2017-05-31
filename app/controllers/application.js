@@ -16,6 +16,9 @@ export default Controller.extend({
     },
     closeDialog() {
       this.set('showDialog', false);
+    },
+    filterMods() {
+      this.transitionToRoute('mods');
     }
   },
 

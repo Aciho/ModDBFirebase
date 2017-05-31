@@ -15,24 +15,24 @@
 
       {{#paper-list}}
         {{#menu-item onClick=(transition-to "index")}}Introduction{{/menu-item}}
-        {{#menu-item  onClick=(transition-to "mods.all")}}All Mods{{/menu-item}}
+        {{#menu-item  onClick=(action "filterMods" "all")}}All Mods{{/menu-item}}
 
         {{#menu-item onClick=(action "toggleExpandedItem" "nationTypes") expanded=nationTypesExpanded canExpand=true}}Nations{{/menu-item}}
 
         <div class="submenu">
           {{#liquid-if nationTypesExpanded}}
-            {{#submenu-item onClick=(transition-to "mods.ea")}}Early Era{{/submenu-item}}
-            {{#submenu-item onClick=(transition-to "mods.ma")}}Middle Era{{/submenu-item}}
-            {{#submenu-item onClick=(transition-to "mods.la")}}Late Era{{/submenu-item}}
-            {{#submenu-item onClick=(transition-to "mods.xa")}}Others{{/submenu-item}}
+            {{#submenu-item onClick=(action "filterMods" "ea")}}Early Era{{/submenu-item}}
+            {{#submenu-item onClick=(action "filterMods" "ma")}}Middle Era{{/submenu-item}}
+            {{#submenu-item onClick=(action "filterMods" "la")}}Late Era{{/submenu-item}}
+            {{#submenu-item onClick=(action "filterMods" "xa")}}Others{{/submenu-item}}
           {{/liquid-if}}
         </div>
 
-        {{#menu-item onClick=(transition-to "mods.balance")}}Balance Mods{{/menu-item}}
-        {{#menu-item onClick=(transition-to "mods.tc")}}Total Conversions{{/menu-item}}
-        {{#menu-item onClick=(transition-to "mods.content")}}Content Mods{{/menu-item}}
+        {{#menu-item onClick=(action "filterMods" "balance")}}Balance Mods{{/menu-item}}
+        {{#menu-item onClick=(action "filterMods" "tc")}}Total Conversions{{/menu-item}}
+        {{#menu-item onClick=(action "filterMods" "content")}}Content Mods{{/menu-item}}
 
-        {{#menu-item onClick=(transition-to "mods.others")}}Others{{/menu-item}}
+        {{#menu-item onClick=(action "filterMods" "others")}}Others{{/menu-item}}
       {{/paper-list}}
       {{paper-divider}}
       <div class="layout-column layout-align-center-stretch">
@@ -47,6 +47,11 @@
     {{#if showDialog}}
       {{upload-dialog closeDialog=(action "closeDialog")}}
     {{/if}}
+    {{#each filteredMods as |mod|}}
+      {{#link-to "mods.show" mod}}
+        {{mod-listing mod=mod}}
+      {{/link-to}}
+    {{/each}}
     {{outlet}}
   </div>
 {{/paper-sidenav-container}}

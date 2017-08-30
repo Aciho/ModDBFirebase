@@ -49,11 +49,13 @@
     "emberfire": "^2.0.7",
     "emberfire-utils": "^1.3.0",
     "liquid-fire": "^0.27.3",
-    "loader.js": "^4.2.3"
+    "loader.js": "^4.2.3",
+    "random-id": "0.0.2"
   },
   "engines": {
     "node": ">= 4"
   },
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+  }
 }

@@ -1,6 +1,4 @@
 import Ember from 'ember';
-import { task } from 'ember-concurrency';
-const { get, set } = Ember;
 
 const { Controller, computed } = Ember;
 
@@ -30,14 +28,6 @@ export default Controller.extend({
       this.get(this, 'uploaddommod').perform(file);
     }
   },
-
-  expandedItem: computed('currentRouteName', function() {
-    if (this.get('currentRouteName').substr(0, 6) === 'layout') {
-      return 'layout';
-    } else {
-      return 'demos';
-    }
-  }),
 
   nationTypesExpanded: computed.equal('expandedItem', 'nationTypes'),
 });
